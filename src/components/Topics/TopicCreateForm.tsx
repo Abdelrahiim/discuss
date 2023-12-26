@@ -11,6 +11,7 @@ import {
 import { useFormState } from "react-dom";
 
 import * as actions from "@/actions";
+import FormButton from "../commen/FormButton";
 const TopicCreateForm = () => {
   const [formState, action] = useFormState(actions.createTopic, { errors: {} });
   return (
@@ -43,7 +44,7 @@ const TopicCreateForm = () => {
                 {formState.errors._form.join(", ")}
               </div>
             )}
-            <Button type="submit">Submit</Button>
+            <FormButton>Create Topic</FormButton>
           </div>
         </form>
       </PopoverContent>

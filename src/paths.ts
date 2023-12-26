@@ -10,13 +10,13 @@ const paths = {
     return "/";
   },
   topicShow(topicSlug: string) {
-    return `topics/${topicSlug}`;
+    return `/topics/${topicSlug}`;
   },
   postCreate(topicSlug: string) {
-    return `topics/${topicSlug}/posts/new`;
+    return `/topics/${topicSlug}/posts/new`;
   },
   postShow(topicSlug: string, id: string) {
-    return `topics/${topicSlug}/posts/${id}`;
+    return `/topics/${topicSlug}/posts/${id}`;
   },
 };
 

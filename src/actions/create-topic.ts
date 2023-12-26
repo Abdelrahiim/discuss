@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import paths from "@/paths";
 import { db } from "@/db";
 import { revalidatePath } from "next/cache";
+
 /**
  * Schema For The data
  */
@@ -19,6 +20,9 @@ const createTopicSchema = z.object({
   description: z.string().min(10),
 });
 
+/**
+ * FormState InterFace
+ */
 interface CreateTopicFormState {
   errors: {
     name?: string[];
@@ -30,10 +34,9 @@ interface CreateTopicFormState {
 /**
  * Handle Create Topic Functionality
  *
- * TODO : revalidate homePage
  */
 export async function createTopic(
-  formState: CreateTopicFormState,
+  _formState: CreateTopicFormState,
   formData: FormData
 ): Promise<CreateTopicFormState> {
   const session = await auth();
@@ -46,6 +49,7 @@ export async function createTopic(
       },
     };
   }
+
   // Validate the Input to the Z Schema Sync
   const result = createTopicSchema.safeParse({
     name: formData.get("name"),

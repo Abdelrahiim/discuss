@@ -13,7 +13,7 @@ if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
   throw new Error("Missing Github oauth credentials");
 }
 /**
- * Setting up next/auth to work with github 
+ * Setting up next/auth to work with github
  * and export all necessary functions
  */
 export const {
@@ -29,14 +29,13 @@ export const {
       clientSecret: GITHUB_CLIENT_SECRET,
     }),
   ],
-  // callbacks:{
-  //   // Usually not needed
-  //   async session({session,user}:any){
-  //     if(user && session) {
-  //       session.user.id =user.id
-  //     }
-  //     return session
-  //
-  //   }
-  // }
+  callbacks: {
+    // Usually not needed
+    async session({ session, user }: any) {
+      if (user && session) {
+        session.user.id = user.id;
+      }
+      return session;
+    },
+  },
 });
