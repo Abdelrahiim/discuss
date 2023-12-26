@@ -12,7 +12,10 @@ const AUTH_SECRET = process.env.AUTH_SECRET;
 if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
   throw new Error("Missing Github oauth credentials");
 }
-
+/**
+ * Setting up next/auth to work with github 
+ * and export all necessary functions
+ */
 export const {
   handlers: { GET, POST },
   auth,
