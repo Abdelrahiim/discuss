@@ -14,7 +14,7 @@ import {
 import * as actions from "@/actions";
 import { useFormState } from "react-dom";
 import { error } from "console";
-import FormButton from "../commen/FormButton";
+import FormButton from "../common/FormButton";
 import { FC } from "react";
 
 interface PostCreationFormProps {
@@ -22,7 +22,7 @@ interface PostCreationFormProps {
 }
 const PostCreationForm: FC<PostCreationFormProps> = ({ slug }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  // const [backdrop, setBackdrop] = useState("blur");
+
   const [formState, action] = useFormState(
     // used to pass some more variable to server action
     actions.createPost.bind(null, slug),
@@ -31,7 +31,7 @@ const PostCreationForm: FC<PostCreationFormProps> = ({ slug }) => {
   return (
     <>
       <Button onPress={onOpen} color="primary">
-        Open Modal
+        Create Post
       </Button>
       <Modal
         backdrop={"blur"}

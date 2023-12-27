@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 /**
- * C
+ * Create Post Shemma
  */
 const createPostSchema = z.object({
   title: z.string().min(3),
@@ -26,7 +26,7 @@ interface CreatePostFormState {
 }
 /**
  * Handle create post action on server
- *
+ * @param slug getting using bind
  * TODO : revalidate topicShowPage
  * */
 export async function createPost(
