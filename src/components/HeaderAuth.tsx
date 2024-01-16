@@ -13,6 +13,10 @@ import {
 import { useSession } from "next-auth/react";
 import React from "react";
 
+/**
+ * Client Component
+ *
+ */
 const HeaderAuth = () => {
   const session = useSession();
   let authContent: React.ReactNode;

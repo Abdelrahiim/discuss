@@ -8,13 +8,13 @@ import { db } from "@/db";
 import { revalidatePath } from "next/cache";
 
 /**
- * Schema For The data
+ * Schema For Create Topic
  */
 const createTopicSchema = z.object({
   name: z
     .string()
     .min(3)
-    .regex(/^[a-z]+$/, {
+    .regex(/^[a-z-]+$/, {
       message: "Must be lower case letters or dashes without spaces",
     }),
   description: z.string().min(10),

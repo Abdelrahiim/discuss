@@ -27,7 +27,7 @@ interface CreatePostFormState {
 /**
  * Handle create post action on server
  * @param slug getting using bind
- * TODO : revalidate topicShowPage
+ *
  * */
 export async function createPost(
   slug: string,
@@ -44,10 +44,12 @@ export async function createPost(
     };
   }
 
+  // Validate the Date to the Schema
   const result = createPostSchema.safeParse({
     title: formData.get("title"),
     content: formData.get("content"),
   });
+  // return flatten errors if the validation failed
   if (!result.success) {
     return { errors: result.error.flatten().fieldErrors };
   }
@@ -57,6 +59,7 @@ export async function createPost(
       slug,
     },
   });
+
   if (!topic) {
     return {
       errors: {
@@ -64,6 +67,7 @@ export async function createPost(
       },
     };
   }
+  // define post outside try and catch because we need post id for redirect
   let post: Post;
   try {
     post = await db.post.create({
@@ -89,5 +93,6 @@ export async function createPost(
     };
   }
   revalidatePath(paths.topicShow(slug));
+  // redirect to posts page
   redirect(paths.postShow(slug, post.id));
 }
